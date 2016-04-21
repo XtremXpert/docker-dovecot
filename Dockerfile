@@ -12,10 +12,10 @@ RUN groupadd -g 5000 vmail && \
     chmod g+r /etc/dovecot/dovecot.conf
 
 # default config
-ENV DB_HOST localhost
-ENV DB_USER root 
-ENV DB_NAME 
-ENV DB_PASSWORD
+ENV DB_HOST dbsrv
+ENV DB_USER mailuser
+ENV DB_NAME mailserver
+ENV DB_PASSWORD Ch4ng3m3
 
 # IMAP ports  
 EXPOSE 143
