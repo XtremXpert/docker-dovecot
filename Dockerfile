@@ -1,7 +1,15 @@
 FROM ubuntu:latest
 
-RUN apt-get update
-RUN apt-get install -y dovecot-common dovecot-imapd dovecot-mysql
+RUN apt-get update \
+    && apt-get install -y \
+        dovecot-common \
+        dovecot-imapd \
+        dovecot-mysql \
+        dovecot-lmtpd \
+        dovecot-sieve \
+        dovecot-managesieved \
+        dovecot-antispam \
+        spamc
 
 ADD dovecot /etc/dovecot
 ADD start.sh /start.sh  
