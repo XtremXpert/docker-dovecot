@@ -15,11 +15,11 @@ export FULLCHAIN
 
 FQDN=$(hostname --fqdn)
 DOMAIN=$(hostname --domain)
-VMAILUID=${VMAILUID:-1024}
-VMAILGID=${VMAILGID:-1024}
-DBHOST=${DBHOST:-mariadb}
-DBNAME=${DBNAME:-postfix}
-DBUSER=${DBUSER:-postfix}
+VMAILUID=${VMAILUID:-5000}
+VMAILGID=${VMAILGID:-5000}
+DBHOST=${DBHOST:-dbsrv}
+DBNAME=${DBNAME:-mailserveruser}
+DBUSER=${DBUSER:-mailserver}
 
 ADD_DOMAINS=${ADD_DOMAINS:-}
 
@@ -27,7 +27,6 @@ if [ -z "$DBPASS" ]; then
   echo "Mariadb database password must be set !"
   exit 1
 fi
-
 # SSL certificates
 LETS_ENCRYPT_LIVE_PATH=/etc/letsencrypt/live/"$FQDN"
 
@@ -36,10 +35,11 @@ if [ -d "$LETS_ENCRYPT_LIVE_PATH" ]; then
   CAFILE="$LETS_ENCRYPT_LIVE_PATH"/chain.pem
   CERTFILE="$LETS_ENCRYPT_LIVE_PATH"/cert.pem
   KEYFILE="$LETS_ENCRYPT_LIVE_PATH"/privkey.pem
-
-  # When using https://github.com/JrCs/docker-nginx-proxy-letsencrypt
+  
+#When using https://github.com/JrCs/docker-nginx-proxy-letsencrypt
   # and https://github.com/jwilder/nginx-proxy there is only key.pem and fullchain.pem
   # so we look for key.pem and extract cert.pem and chain.pem
+
   if [ ! -e "$KEYFILE" ]; then
     KEYFILE="$LETS_ENCRYPT_LIVE_PATH"/key.pem
   fi
