@@ -2,17 +2,20 @@ FROM ubuntu:latest
 
 RUN apt-get update \
     && apt-get install -y \
+        dovecot \
+        dovecot-antispam \
         dovecot-common \
         dovecot-imapd \
-        dovecot-mysql \
         dovecot-lmtpd \
-        dovecot-sieve \
         dovecot-managesieved \
-        dovecot-antispam \
+        dovecot-mysql \
+        dovecot-sieve \
+        python-pip \
         spamc \
-    && pip install envtpl \
+    && pip install envtpl
+    
 ADD dovecot /etc/dovecot
-ADD start.sh /start.sh  
+ADD startup /startup  
 
 RUN groupadd -g 5000 vmail && \
     useradd -g vmail -u 5000 vmail -d /home/vmail -m && \
