@@ -8,7 +8,6 @@ ENV DBHOST=dbsrv \
 
 RUN apt-get update \
     && apt-get install -y \
-        dovecot \
         dovecot-antispam \
         dovecot-common \
         dovecot-imapd \
