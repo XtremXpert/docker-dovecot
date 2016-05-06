@@ -31,4 +31,4 @@ VOLUME /var/mail /var/lib/dovecot /etc/letsencrypt
 # IMAP ports  
 EXPOSE 143 993 4190
 
-CMD sh startup
+CMD sh /usr/local/bin/startup
