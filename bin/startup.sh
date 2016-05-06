@@ -83,6 +83,9 @@ if [ ! -e /var/mail/ssl/dhparams/dh2048.pem ] || [ ! -e /var/mail/ssl/dhparams/d
 fi
 
 # Add ENV DOMAIN and ADD_DOMAINS
+###
+#
+#
 domains=(${DOMAIN})
 domains+=(${ADD_DOMAINS//,/ })
 
