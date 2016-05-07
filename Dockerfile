@@ -23,11 +23,6 @@ RUN DEBIAN_FRONTEND=noninteractive \
 COPY dovecot /etc/dovecot
 COPY bin /usr/local/bin  
 
-RUN groupadd -g 5000 vmail && \
-    useradd -g vmail -u 5000 vmail -d /home/vmail -m && \
-    chgrp vmail /etc/dovecot/dovecot.conf && \
-    chmod g+r /etc/dovecot/dovecot.conf
-
 VOLUME /var/mail /var/lib/dovecot /etc/letsencrypt
 # IMAP ports  
 EXPOSE 143 993 4190
