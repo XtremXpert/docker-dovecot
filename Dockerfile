@@ -6,7 +6,8 @@ ENV DBHOST=dbsrv \
     DBNAME=mailserver \
     DBPASS=Ch4ng3m3
 
-RUN apt-get update \
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get update \
     && apt-get install -y \
         dovecot-antispam \
         dovecot-common \
