@@ -86,15 +86,16 @@ fi
 ###
 #
 #
-domains=(${DOMAIN})
-domains+=(${ADD_DOMAINS//,/ })
+# start here
+#domains=(${DOMAIN})
+#domains+=(${ADD_DOMAINS//,/ })
 
-for domain in "${domains[@]}"; do
+#for domain in "${domains[@]}"; do
   # Add vhost
-  mkdir -p /var/mail/vhosts/"$domain"
+ # mkdir -p /var/mail/vhosts/"$domain"
 
-done
-
+#done
+## end here
 if [ ! -d "$LETS_ENCRYPT_LIVE_PATH" ]; then
   sed -i '/^\(smtp_tls_CAfile\|smtpd_tls_CAfile\)/s/^/#/' /etc/postfix/main.cf
 fi
