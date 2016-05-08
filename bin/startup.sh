@@ -96,9 +96,9 @@ fi
 
 #done
 ## end here
-if [ ! -d "$LETS_ENCRYPT_LIVE_PATH" ]; then
-  sed -i '/^\(smtp_tls_CAfile\|smtpd_tls_CAfile\)/s/^/#/' /etc/postfix/main.cf
-fi
+#if [ ! -d "$LETS_ENCRYPT_LIVE_PATH" ]; then
+#  sed -i '/^\(smtp_tls_CAfile\|smtpd_tls_CAfile\)/s/^/#/' /etc/postfix/main.cf
+#fi
 
 # Replace {{ ENV }} vars
 _envtpl() {
@@ -110,7 +110,7 @@ _envtpl /etc/dovecot/conf.d/10-mail.conf
 _envtpl /etc/dovecot/dovecot-sql.conf.ext
 _envtpl /etc/dovecot/conf.d/10-ssl.conf
 _envtpl /etc/dovecot/conf.d/20-lmtp.conf
-_envtpl /etc/mailname
+#_envtpl /etc/mailname
 
 # Folders and permissions
 groupadd -g "$VMAILGID" vmail
@@ -138,7 +138,7 @@ sievec /var/mail/sieve/default.sieve
 
 # Dovecot mountpoints ignoring
 doveadm mount add /var/lib/dovecot ignore
-doveadm mount add /etc/opendkim/keys ignore
+#doveadm mount add /etc/opendkim/keys ignore
 doveadm mount add /etc/letsencrypt ignore
 
 /usr/sbin/dovecot -c /etc/dovecot/dovecot.conf -F
