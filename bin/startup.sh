@@ -28,7 +28,7 @@ if [ -z "$DBPASS" ]; then
   exit 1
 fi
 # SSL certificates
-LETS_ENCRYPT_LIVE_PATH=/etc/letsencrypt/live/"$FQDN"
+LETS_ENCRYPT_LIVE_PATH=/etc/letsencrypt/poste.xtremxpert.com
 
 if [ -d "$LETS_ENCRYPT_LIVE_PATH" ]; then
   FULLCHAIN="$LETS_ENCRYPT_LIVE_PATH"/fullchain.pem
